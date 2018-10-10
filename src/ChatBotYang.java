@@ -22,7 +22,7 @@ public class ChatBotYang
 		System.out.println (getGreeting());
 
 
-		while (!statement.equals("Bye"))
+		while (!statement.equals("Byee"))
 		{
 
 
