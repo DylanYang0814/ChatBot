@@ -40,7 +40,7 @@ public class ChatBotYang
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hi, what's? up?";
 	}
 	
 	/**
