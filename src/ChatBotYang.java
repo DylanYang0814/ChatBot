@@ -86,6 +86,10 @@ public class ChatBotYang
 		{
 			response = transformIWantToStatement(statement);
 		}
+		else if (findKeyword(statement, "Can I use", 0) >= 0)
+        {
+            response = transformCanIUse(statement);
+        }
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
@@ -120,6 +124,36 @@ public class ChatBotYang
 		return "Why do you want to " + restOfStatement + "?";
 	}
 
+	private String transformCanIUse(String statement)
+	{
+		//  Remove the final period, if there is one
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals(".") || lastChar.equals("?"))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn = findKeyword (statement, "Can I use", 0);
+		String restOfStatement = statement.substring(psn + 9).trim();
+
+		String[] material = {"Soap", "Bleach", "Tide Pods", "Detergent Pods", "Baking Soda"};
+
+		int index = 0;
+		int matNum = findKeyword(statement, material[index], 0);
+		while (matNum <= 0)
+        {
+            index++;
+            matNum = findKeyword(statement, material[index], 0);
+        }
+        if (material[index].equals("Bleach"))
+        {
+            return "You could just bleach, but be careful";
+        }
+
+		return "Why do you want to use " + restOfStatement + "?";
+	}
 	
 	/**
 	 * Take a statement with "I want <something>." and transform it into 

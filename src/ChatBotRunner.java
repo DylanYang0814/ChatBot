@@ -13,8 +13,8 @@ public class ChatBotRunner
 	 */
 	public static void main(String[] args)
 	{
-		ChatBotYang chatbot1 = new ChatBotYang();
-		ChatBotAlam chatbot2 = new ChatBotAlam();
+		ChatBotYang chatbot2 = new ChatBotYang();
+		ChatBotAlam chatbot1 = new ChatBotAlam();
 		ChatBotYu chatbot3 = new ChatBotYu();
 		ChatBotN chatbot4 = new ChatBotN();
 		
@@ -41,11 +41,13 @@ public class ChatBotRunner
             }
             if (statement.equals("hyigene") || statement.equals("2"))
             {
-
+				chatbot2.chatLoop(statement);
+				statement = in.nextLine();
             }
             if (statement.equals("class") || statement.equals("3"))
             {
-
+            	chatbot3.chatLoop(statement);
+            	statement = in.nextLine();
             }
             if (statement.equals("hyigene") || statement.equals("2"))
             {
