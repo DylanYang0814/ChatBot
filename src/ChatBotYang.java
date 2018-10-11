@@ -142,14 +142,27 @@ public class ChatBotYang
 
 		int index = 0;
 		int matNum = findKeyword(statement, material[index], 0);
-		while (matNum <= 0)
+		while (matNum <= 0 && index < 4)
         {
             index++;
             matNum = findKeyword(statement, material[index], 0);
+
+        }
+        if (matNum == -1)
+        {
+            return "Why do you want to use " + restOfStatement + "?";
         }
         if (material[index].equals("Bleach"))
         {
             return "You could just bleach, but be careful";
+        }
+        if (material[index].equals("Soap") || material[index].equals("Baking Soda"))
+        {
+            return material[index] + " isn't really useful for laundry machines";
+        }
+        if (material[index].equals("Tide Pods") || material[index].equals("Detergent Pods"))
+        {
+            return material[index] + " are great, just don't eat it!";
         }
 
 		return "Why do you want to use " + restOfStatement + "?";
@@ -306,10 +319,11 @@ public class ChatBotYang
 	private String [] randomNeutralResponses = {"Interesting, tell me more",
 			"Hmmm.",
 			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
-			"So, would you like to go for a walk?",
-			"Could you say that again?"
+			"Interesting..",
+			"Tell me more",
+			"Thinking...",
+			"Could you say that again?",
+            "Sorry, I didn't get that"
 	};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};

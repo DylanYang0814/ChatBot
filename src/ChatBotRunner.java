@@ -30,37 +30,36 @@ public class ChatBotRunner
 		String statement = in.nextLine();
 
 
-
-		while (!statement.equalsIgnoreCase("Bye") )
+		while (!statement.equals("Bye"))
 		{
 			//Use Logic to control which chatbot is handling the conversation\
 			//This example has only chatbot1
 
-            if (statement.equalsIgnoreCase("cook") || statement.equals("1"))
+            if (statement.equals("cook") || statement.equals("1"))
             {
                 chatbot1.chatLoop(statement);
                 statement = in.nextLine();
-
             }
-			if (statement.equalsIgnoreCase("hyigene") || statement.equals("2")) {
+            if (statement.equals("hyigene") || statement.equals("2"))
+            {
 				chatbot2.chatLoop(statement);
 				statement = in.nextLine();
+            }
+            if (statement.equals("class") || statement.equals("3"))
+            {
+            	chatbot3.chatLoop(statement);
+            	statement = in.nextLine();
+            }
+            if (statement.equals("hyigene") || statement.equals("2"))
+            {
+
+            }
 
 
-			}
-			if (statement.equalsIgnoreCase("class") || statement.equals("3"))
-			{
-				chatbot3.chatLoop(statement);
-				statement = in.nextLine();
+			chatbot1.chatLoop(statement);
 
-			}
-			if (statement.equalsIgnoreCase("relationship") || statement.equals("4"))
-			{
-				chatbot4.chatLoop(statement);
-				statement = in.nextLine();
 
-			}
-
+			statement = in.nextLine();
 
 
 		}
