@@ -78,6 +78,10 @@ public class ChatBotYu
 		{
 			response = transformIWantToStatement(statement);
 		}
+		else if (findKeyword(statement, "How do I", 0) >= 0)
+		{
+			response = transformHowDoIStatement(statement);
+		}
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
@@ -111,6 +115,44 @@ public class ChatBotYu
 		String restOfStatement = statement.substring(psn + 9).trim();
 		return "Why do you want to " + restOfStatement + "?";
 	}
+	private String transformHowDoIStatement(String statement)
+	{
+		//  Remove the final period, if there is one
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn = findKeyword (statement, "How do I", 0);
+		String restOfStatement = statement.substring(psn + 8).trim();
+		String[] cInfo = {"study","score higher","sleep"};
+
+		int index = 0;
+		int matNum = findKeyword(statement, cInfo[index], 0);
+		while (matNum <= 0)
+		{
+			index++;
+			matNum = findKeyword(statement, cInfo[index], 0);
+		}
+		if (cInfo[index].equals("study"))
+		{
+			return "You can study by going over notes and homework, then quizzing yourself on material you have already done.";
+		}
+		if (cInfo[index].equals("score higher"))
+		{
+			return "You can take tests and score higher by studying.";
+		}
+		if (cInfo[index].equals("sleep"))
+		{
+			return "You can sleep better and quicker if you have nothing on your mind, writing down all your thoughts before sleeping can help.";
+		}
+		return "Why would you want to " + restOfStatement + "?";
+	}
+
+
 
 	
 	/**
