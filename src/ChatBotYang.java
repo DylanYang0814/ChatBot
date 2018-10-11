@@ -142,14 +142,27 @@ public class ChatBotYang
 
 		int index = 0;
 		int matNum = findKeyword(statement, material[index], 0);
-		while (matNum <= 0)
+		while (matNum <= 0 && index < 4)
         {
             index++;
             matNum = findKeyword(statement, material[index], 0);
+
+        }
+        if (matNum == -1)
+        {
+            return "Why do you want to use " + restOfStatement + "?";
         }
         if (material[index].equals("Bleach"))
         {
             return "You could just bleach, but be careful";
+        }
+        if (material[index].equals("Soap") || material[index].equals("Baking Soda"))
+        {
+            return material[index] + " isn't really useful for laundry machines";
+        }
+        if (material[index].equals("Tide Pods") || material[index].equals("Detergent Pods"))
+        {
+            return material[index] + " are great, just don't eat it!";
         }
 
 		return "Why do you want to use " + restOfStatement + "?";
