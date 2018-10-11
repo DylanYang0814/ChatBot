@@ -16,7 +16,7 @@ public class ChatBotRunner
 		ChatBotYang chatbot1 = new ChatBotYang();
 		ChatBotAlam chatbot2 = new ChatBotAlam();
 		ChatBotYu chatbot3 = new ChatBotYu();
-		ChatBotN chatbot4 = new ChatBotN();
+		ChatBotSakib chatbot4 = new ChatBotSakib();
 		
 
 		Scanner in = new Scanner (System.in);
