@@ -25,7 +25,6 @@ public class ChatBotSakib
 		while (!statement.equals("Bye"))
 		{
 
-
 			statement = in.nextLine();
 			//getResponse handles the user reply
 			System.out.println(getResponse(statement));
@@ -40,7 +39,7 @@ public class ChatBotSakib
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hey! What's up?";
 	}
 	
 	/**
@@ -169,7 +168,20 @@ public class ChatBotSakib
 		return "Why do you " + restOfStatement + " me?";
 	}
 	
+	private String imSad(String statement)
+	{
+		statement = statement.trim();
+        statement = statement.trim();
+        String lastChar = statement.substring(statement
+                .length() - 1);
+        if (lastChar.equals("."))
+        {
+            statement = statement.substring(0, statement
+                    .length() - 1);
+        }
 
+		return "";
+	}
 	
 	
 	/**
@@ -277,7 +289,7 @@ public class ChatBotSakib
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private String [] randomAngryResponses = {"Catch these hands","You mad?","Say wassup","Swing first you wont","This is why they dont love you","You gonna stay single"};
+	private String [] randomHappyResponses = {"It's aii ily man", "Today's looking kinda lit", "Like lookin kinda swell rn","I got you","You're da my day 1","Ayo screw them they missin out"};
 	
 }
