@@ -16,7 +16,7 @@ public class ChatBotRunner
 		ChatBotYang chatbot2 = new ChatBotYang();
 		ChatBotAlam chatbot1 = new ChatBotAlam();
 		ChatBotYu chatbot3 = new ChatBotYu();
-		ChatBotN chatbot4 = new ChatBotN();
+		ChatBotSakib chatbot4 = new ChatBotSakib();
 		
 
 		Scanner in = new Scanner (System.in);
@@ -25,6 +25,7 @@ public class ChatBotRunner
 		System.out.println("For information on cooking, say 1 or cook");
 		System.out.println("For information on laundry, folding, ironing, and general hygiene say 2 or hygiene");
 		System.out.println("For information on college class, say 3 or class");
+		System.out.println("For more information on college relationships say 4 or relationship");
         //System.out.println();
 		String statement = in.nextLine();
 
