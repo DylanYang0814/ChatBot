@@ -128,7 +128,7 @@ public class ChatBotYu
 		}
 		int psn = findKeyword (statement, "How do I", 0);
 		String restOfStatement = statement.substring(psn + 8).trim();
-		String[] cInfo = {"study","score higher","sleep"};
+		String[] cInfo = {"study","score higher","sleep","relax"};
 
 		int index = 0;
 		int matNum = findKeyword(statement, cInfo[index], 0);
@@ -140,6 +140,9 @@ public class ChatBotYu
 		if (cInfo[index].equals("study"))
 		{
 			return "You can study by going over notes and homework, then quizzing yourself on material you have already done.";
+		}if (cInfo[index].equals("relax"))
+		{
+			return "Relaxing is very important because it can help you recharge, you could take time off for yourself and relax by listening to music or playing games.";
 		}
 		if (cInfo[index].equals("score higher"))
 		{
@@ -205,7 +208,7 @@ public class ChatBotYu
 	
 
 	
-	
+
 	/**
 	 * Search for one word in phrase. The search is not case
 	 * sensitive. This method will check that the given goal
@@ -309,9 +312,11 @@ public class ChatBotYu
 			"You don't say.",
 			"It's all boolean to me.",
 			"So, would you like to go for a walk?",
-			"Could you say that again?"
+			"Could you say that again?",
+			"It be like that sometimes",
+			"It be what it be"0
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
+	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!", "Git Gud"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
 	
 }
