@@ -50,18 +50,11 @@ public class ChatBotRunner
             	chatbot3.chatLoop(statement);
             	statement = in.nextLine();
             }
-            if (statement.equals("hyigene") || statement.equals("2"))
+            if (statement.equals("relationship") || statement.equals("4"))
             {
-
+            	chatbot4.chatLoop(statement);
+            	statement = in.nextLine();
             }
-
-
-			chatbot1.chatLoop(statement);
-
-
-			statement = in.nextLine();
-
-
 		}
 	}
 
