@@ -20,8 +20,8 @@ public class ChatBotRunner
 		
 
 		Scanner in = new Scanner (System.in);
-		System.out.println("Welcome to the chatbot, nice to meet you.");
-		System.out.println("Here is the menu:");
+		System.out.println("Welcome to the ChatBot.");
+		System.out.println("Menu:");
 		System.out.println("For information on cooking, say 1 or cook");
 		System.out.println("For information on laundry, folding, ironing, and general hygiene say 2 or hygiene");
 		System.out.println("For information on college class, say 3 or class");

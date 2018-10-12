@@ -1,3 +1,4 @@
+import java.sql.Statement;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,9 +20,10 @@ public class ChatBotYang
 	public void chatLoop(String statement)
 	{
 		Scanner in = new Scanner (System.in);
-		System.out.println (getGreeting());
+		//System.out.println (getGreeting());
 
-
+        askName(statement);
+        //Starter(statement);
 		while (!statement.equals("Byee"))
 		{
 
@@ -42,6 +44,55 @@ public class ChatBotYang
 	{
 		return "Hi, what's? up?";
 	}
+
+	private void askName(String statement)
+    {
+        System.out.println("Hello, what's your name?");
+        Scanner firstName = new Scanner(System.in);
+        String name = firstName.nextLine();
+        System.out.println("That's an interesting name, " + name);
+    }
+
+    private String Starter(String statement)
+    {
+        String[] accept = {"Yes", "Yea", "Yeah", "Sure", "Ok", "Why not"};
+        String[] decline = {"No", "Nah", "Nope", "Not really"};
+
+        System.out.println("So, what do you want to know? I can teach you some things if you want.");
+        Scanner in = new Scanner (System.in);
+        statement = in.nextLine();
+        int index = 0;
+        int acceptNum = findKeyword(statement, accept[index], 0);
+        while (acceptNum <= 0 && index < 5)
+        {
+            index++;
+            acceptNum = findKeyword(statement, accept[index], 0);
+            System.out.println(acceptNum);
+
+            if (acceptNum == 0)
+            {
+                System.out.println("Glad u said yes");
+            }
+
+        }
+        if (acceptNum == -1)
+        {
+            index = 0;
+            int declineNum = findKeyword(statement, decline[index], 0);
+            while (declineNum <= 0 && index < 3)
+            {
+                index++;
+                declineNum = findKeyword(statement, decline[index], 0);
+            }
+        }
+        if (acceptNum != -1)
+        {
+            System.out.println(index);
+            return "Yes";
+        }
+        return "no";
+
+    }
 	
 	/**
 	 * Gives a response to a user statement
