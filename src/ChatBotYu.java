@@ -128,7 +128,7 @@ public class ChatBotYu
 		}
 		int psn = findKeyword (statement, "How do I", 0);
 		String restOfStatement = statement.substring(psn + 8).trim();
-		String[] cInfo = {"study","score higher","sleep","relax"};
+		String[] cInfo = {"study","score higher","sleep","relax","make up assignments"};
 
 		int index = 0;
 		int matNum = findKeyword(statement, cInfo[index], 0);
@@ -314,7 +314,7 @@ public class ChatBotYu
 			"So, would you like to go for a walk?",
 			"Could you say that again?",
 			"It be like that sometimes",
-			"It be what it be"0
+			"It be what it be"
 	};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!", "Git Gud"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
