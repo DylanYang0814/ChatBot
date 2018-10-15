@@ -289,7 +289,7 @@ public class ChatBotSakib
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
-	private String [] randomAngryResponses = {"Catch these hands","You mad?","Say wassup","Swing first you wont","This is why they dont love you","You gonna stay single"};
+	private String [] randomAngryResponses = {"This is why they don't love you","You gonna stay single"};
 	private String [] randomHappyResponses = {"It's aii ily man", "Today's looking kinda lit", "Like lookin kinda swell rn","I got you","You're da my day 1","Ayo screw them they missin out"};
 	
 }
