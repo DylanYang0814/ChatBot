@@ -128,7 +128,7 @@ public class ChatBotYu
 		}
 		int psn = findKeyword (statement, "How do I", 0);
 		String restOfStatement = statement.substring(psn + 8).trim();
-		String[] cInfo = {"study","score higher","sleep","relax"};
+		String[] cInfo = {"study","score higher","sleep","relax","make up assignments"};
 
 		int index = 0;
 		int matNum = findKeyword(statement, cInfo[index], 0);
