@@ -314,7 +314,7 @@ public class ChatBotYu
 			"So, would you like to go for a walk?",
 			"Could you say that again?",
 			"It be like that sometimes",
-			"It be what it be"0
+			"It be what it be"
 	};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!", "Git Gud"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
