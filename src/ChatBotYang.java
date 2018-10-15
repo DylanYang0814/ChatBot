@@ -144,7 +144,11 @@ public class ChatBotYang
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
-		}	
+		}
+		else if (findKeyword(statement, "learn", 0) >= 0)
+        {
+            response = teachMain(statement);
+        }
 		else
 		{
 			response = getRandomResponse();
@@ -174,6 +178,21 @@ public class ChatBotYang
 		String restOfStatement = statement.substring(psn + 9).trim();
 		return "Why do you want to " + restOfStatement + "?";
 	}
+
+	private String teachMain(String statement)
+    {
+        statement = statement.trim();
+        String lastChar = statement.substring(statement
+                .length() - 1);
+        if (lastChar.equals("."))
+        {
+            statement = statement.substring(0, statement
+                    .length() - 1);
+        }
+        int psn = findKeyword(statement, "learn", 0);
+        return ("" + psn);
+
+    }
 
 	private String transformCanIUse(String statement)
 	{
