@@ -2,15 +2,33 @@ package SakibBotDir;
 
 public class User  {
 
-    Person userAssociations;
+    private Person[] userAssociations;
+    private String userName = "";
 
 
-    public void User() {
+
+    public  User(Person[] userAssociations)
+    {
+        this.userAssociations = userAssociations;
 
     }
 
-    public void User(Person userAssociations)
+    public  void setUserAssociations(Person newPerson)
     {
-        this.userAssociations = userAssociations;
+        int count = 0;
+        for (int i=0; !(userAssociations[i].equals(newPerson));i++)
+        {
+            count++;
+        }
+        userAssociations[count] = newPerson;
+    }
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

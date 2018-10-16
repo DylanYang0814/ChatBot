@@ -6,4 +6,6 @@ public class Parent extends Person {
     {
         super(firstName,lastName,"parent");
     }
+
+
 }

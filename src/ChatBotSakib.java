@@ -1,3 +1,5 @@
+import SakibBotDir.*;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,6 +13,9 @@ public class ChatBotSakib
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
+	private Person[] userRelationships = new Person[1000];
+	private User endUser = new User(userRelationships);
+
 
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
@@ -19,8 +24,11 @@ public class ChatBotSakib
 	public void chatLoop(String statement)
 	{
 		Scanner in = new Scanner (System.in);
-		System.out.println (getGreeting());
-
+        System.out.println("Hey I'm Bob! Who're you?");
+        String name = in.nextLine();
+        System.out.println("Hey "+name+" what's up?");
+        endUser.setUserName(name);
+        //System.out.println(endUser.getUserName());
 
 		while (!statement.equals("Bye"))
 		{
@@ -33,14 +41,7 @@ public class ChatBotSakib
 		}
 
 	}
-	/**
-	 * Get a default greeting 	
-	 * @return a greeting
-	 */	
-	public String getGreeting()
-	{
-		return "Hey! What's up?";
-	}
+
 	
 	/**
 	 * Gives a response to a user statement
@@ -60,7 +61,7 @@ public class ChatBotSakib
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so negative?";
+			response = "Why?";
                 	emotion--;
 		}
 		
