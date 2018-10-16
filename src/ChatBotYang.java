@@ -1,4 +1,4 @@
-import java.sql.Statement;
+import java.util.concurrent.TimeUnit;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -190,8 +190,43 @@ public class ChatBotYang
                     .length() - 1);
         }
         int psn = findKeyword(statement, "learn", 0);
-        return ("" + psn);
 
+        if (psn == 0)
+        {
+            System.out.println("Here's a guide on how to wash your clothes.");
+            try {
+                Thread.sleep(1000);
+                System.out.println("I suggest you use a washing machine, since its the 21st century and we ain't living in rocks");
+                Thread.sleep(1000);
+                System.out.println("First you need to have detergent, buy accordingly to your favorite scent and skin conditions");
+                Thread.sleep(1000);
+                System.out.println("Then, I recommend you to have to have fabric softener, buy accordingly to your favorite scent and skin conditions");
+                Thread.sleep(2000);
+                System.out.println("When you are ready to wash your clothes, separate the color sensitive clothes into one pile.");
+                Thread.sleep(1000);
+                System.out.println("Load your clothes in to the washing machine and make sure nothing is crumbled up");
+                Thread.sleep(1000);
+                System.out.println("Add all your materials such as detergent, bleach, and softener. For questions about materials feel free to ask");
+                Thread.sleep(2000);
+                System.out.println("Add your payment in quarters if you are using the machines at an laundromat");
+                Thread.sleep(1000);
+                System.out.println("Press start and wait!");
+                Thread.sleep(1000);
+                System.out.println("When your clothes are done washing, remove them, and add them to the dryer");
+                Thread.sleep(1000);
+                System.out.println("Toss in some scent sheets and dry according to your laundry size");
+                Thread.sleep(1000);
+                System.out.println("For summer clothes, 20-30 minutes on high will do");
+                Thread.sleep(1000);
+                System.out.println("For winter clothes, you would need 30-40 minutes on high");
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+                throw new RuntimeException(ex);
+            }
+        }
+
+        return "s";
     }
 
 	private String transformCanIUse(String statement)
