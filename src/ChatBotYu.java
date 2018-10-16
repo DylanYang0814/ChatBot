@@ -85,7 +85,11 @@ public class ChatBotYu
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
-		}	
+		}
+		else if (findKeyword(statement, "Could you go more in depth?",0) >= 0)
+		{
+			response = transformCYGMIDStatement(statement);
+		}
 		else
 		{
 			response = getRandomResponse();
@@ -131,11 +135,11 @@ public class ChatBotYu
 		String[] cInfo = {"study","score higher","sleep","relax","make up assignments"};
 
 		int index = 0;
-		int matNum = findKeyword(statement, cInfo[index], 0);
-		while (matNum <= 0)
+		int CiNum = findKeyword(statement, cInfo[index], 0);
+		while (CiNum <= 0)
 		{
 			index++;
-			matNum = findKeyword(statement, cInfo[index], 0);
+			CiNum = findKeyword(statement, cInfo[index], 0);
 		}
 		if (cInfo[index].equals("study"))
 		{
@@ -153,6 +157,21 @@ public class ChatBotYu
 			return "You can sleep better and quicker if you have nothing on your mind, writing down all your thoughts before sleeping can help.";
 		}
 		return "Why would you want to " + restOfStatement + "?";
+
+
+
+	}
+	private String transformCYGMIDStatement(String statement) {
+		//  Remove the final period, if there is one
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals(".")) {
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn2 = findKeyword(statement, "Could you go more in depth?", 0);
+
 	}
 
 
@@ -314,7 +333,8 @@ public class ChatBotYu
 			"So, would you like to go for a walk?",
 			"Could you say that again?",
 			"It be like that sometimes",
-			"It be what it be"
+			"It be what it be",
+			"Ask me about school"
 	};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!", "Git Gud"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
