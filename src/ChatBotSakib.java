@@ -2,6 +2,11 @@ import SakibBotDir.*;
 
 import java.util.Random;
 import java.util.Scanner;
+import edu.stanford.nlp.simple.*;
+
+
+
+
 
 /**
  * A program to carry on conversations with a human user.
@@ -9,6 +14,11 @@ import java.util.Scanner;
  * @author Brooklyn Tech CS Department
  * @version September 2018
  */
+
+
+
+
+
 public class ChatBotSakib
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
@@ -26,7 +36,7 @@ public class ChatBotSakib
 		Scanner in = new Scanner (System.in);
         System.out.println("Hey I'm Bob! Who're you?");
         String name = in.nextLine();
-        System.out.println("Hey "+name+" what's up?");
+        System.out.println("Hey "+name+" how's college going for you?");
         endUser.setUserName(name);
         //System.out.println(endUser.getUserName());
 
@@ -41,6 +51,9 @@ public class ChatBotSakib
 		}
 
 	}
+
+
+
 
 	
 	/**

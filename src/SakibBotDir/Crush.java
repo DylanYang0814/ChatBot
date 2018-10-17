@@ -1,4 +1,7 @@
 package SakibBotDir;
+import edu.stanford.nlp.simple.*;
+
+import java.util.List;
 
 public class Crush extends Person {
 
@@ -15,6 +18,16 @@ public class Crush extends Person {
         this.lastName = lastName;
 
     }
+
+
+
+
+    Sentence woo = new Sentence("hi");
+    List<String> nerTags =  woo.nerTags();
+
+
+
+
 
 
 }
