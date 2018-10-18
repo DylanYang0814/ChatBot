@@ -14,8 +14,8 @@ public class ChatBotRunner
 	public static void main(String[] args)
 	{
 		ChatBotYang chatbot2 = new ChatBotYang();
-		//ChatBotAlam chatbot1 = new ChatBotAlam();
-		//ChatBotYu chatbot3 = new ChatBotYu();
+		ChatBotAlam chatbot1 = new ChatBotAlam();
+		ChatBotYu chatbot3 = new ChatBotYu();
 		ChatBotSakib chatbot4 = new ChatBotSakib();
 		
 
@@ -37,7 +37,7 @@ public class ChatBotRunner
 
             if (statement.equals("cook") || statement.equals("1"))
             {
-                //chatbot1.chatLoop(statement);
+                chatbot1.chatLoop(statement);
                 statement = in.nextLine();
             }
             if (statement.equals("hyigene") || statement.equals("2"))
@@ -47,7 +47,7 @@ public class ChatBotRunner
             }
             if (statement.equals("class") || statement.equals("3"))
             {
-            	//chatbot3.chatLoop(statement);
+            	chatbot3.chatLoop(statement);
             	statement = in.nextLine();
             }
             if (statement.equals("relationship") || statement.equals("4"))
