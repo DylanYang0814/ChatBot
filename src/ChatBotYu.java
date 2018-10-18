@@ -86,10 +86,7 @@ public class ChatBotYu
 		{
 			response = transformIWantStatement(statement);
 		}
-		else if (findKeyword(statement, "Could you go more in depth?",0) >= 0)
-		{
-			response = transformCYGMIDStatement(statement);
-		}
+
 		else
 		{
 			response = getRandomResponse();
@@ -159,18 +156,6 @@ public class ChatBotYu
 		return "Why would you want to " + restOfStatement + "?";
 
 
-
-	}
-	private String transformCYGMIDStatement(String statement) {
-		//  Remove the final period, if there is one
-		statement = statement.trim();
-		String lastChar = statement.substring(statement
-				.length() - 1);
-		if (lastChar.equals(".")) {
-			statement = statement.substring(0, statement
-					.length() - 1);
-		}
-		int psn2 = findKeyword(statement, "Could you go more in depth?", 0);
 
 	}
 
