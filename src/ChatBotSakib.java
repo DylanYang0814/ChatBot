@@ -15,16 +15,14 @@ import edu.stanford.nlp.simple.*;
  * @version September 2018
  */
 
-
-
-
-
 public class ChatBotSakib
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
-	int emotion = 0;
+	int emotion = -1;
+	String[] tempArr;
 	private Person[] userRelationships = new Person[1000];
 	private User endUser = new User(userRelationships);
+
 
 
 	/**
@@ -69,7 +67,7 @@ public class ChatBotSakib
 		
 		if (statement.length() == 0)
 		{
-			response = "Say something, please.";
+			response = "You need to type before you press enter, lol.";
 		}
 
 		else if (findKeyword(statement, "no") >= 0)
@@ -110,7 +108,18 @@ public class ChatBotSakib
 		
 		return response;
 	}
-	
+
+
+	private void nameCheck(String sentence)
+    {
+        Sentence sent = new Sentence(sentence);
+        
+    }
+
+
+
+
+
 	/**
 	 * Take a statement with "I want to <something>." and transform it into 
 	 * "Why do you want to <something>?"
@@ -303,7 +312,7 @@ public class ChatBotSakib
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
-	private String [] randomAngryResponses = {"It's aii ily man", "Today's looking kinda lit", "Like lookin kinda swell rn","I got you","You're da my day 1","Ayo screw them they missin out"};
+	private String [] randomAngryResponses = {"Its aii man life is slow like that sometimes",};
 	private String [] randomHappyResponses = {"Life really is amazing isn't it?","Great weather we're having! It really makes me happy!","I'm glad to see you're doing well","A smile a day makes the world a better place."};
 
 }
