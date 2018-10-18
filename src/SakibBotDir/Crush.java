@@ -22,8 +22,8 @@ public class Crush extends Person {
 
 
 
-    Sentence woo = new Sentence("hi");
-    List<String> nerTags =  woo.nerTags();
+    Sentence woo = new Sentence("hi.");
+    String nerTags =  woo.nerTag(0);
 
 
 
