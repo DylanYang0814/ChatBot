@@ -2,7 +2,7 @@ import SakibBotDir.*;
 
 import java.util.Random;
 import java.util.Scanner;
-import edu.stanford.nlp.simple.*;
+//import edu.stanford.nlp.simple.*;
 
 
 
@@ -112,8 +112,8 @@ public class ChatBotSakib
 
 	private void nameCheck(String sentence)
     {
-        Sentence sent = new Sentence(sentence);
-        
+        //Sentence sent = new Sentence(sentence);
+
     }
 
 
