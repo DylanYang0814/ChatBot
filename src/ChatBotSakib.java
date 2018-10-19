@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class ChatBotSakib
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
-	int emotion = 0;
+	int emotion = 1;
 	String name;
 
 
@@ -47,7 +47,7 @@ public class ChatBotSakib
         {
             Thread.currentThread().interrupt();
         }
-        System.out.println("It's also important to have great friends. Theyw ill always be there for you, just make sure you make teh right kind of friends!");
+        System.out.println("It's also important to have great friends. They will always be there for you, just make sure you make teh right kind of friends!");
         try
         {
             Thread.sleep(3000);
@@ -56,7 +56,7 @@ public class ChatBotSakib
         {
             Thread.currentThread().interrupt();
         }
-        System.out.println("Crushes aren't very important but they can eventually develop into something better. Just make sure you don't get too obsessed they might end up breaking your heart.");
+        System.out.println("Crushes may seem like they are the most important person in your life, but you can always get ove them and fall for soemone else. Don't let yourself get heartbroken!");
         try
         {
             Thread.sleep(2000);
@@ -76,6 +76,7 @@ public class ChatBotSakib
 			System.out.println(getResponse(statement));
 
 		}
+		System.out.println("I'll talk to you later "+name+"!");
 		System.out.println("Try our other bots! ");
 		ChatBotRunner.botRunner();
         in.close();
@@ -88,6 +89,8 @@ public class ChatBotSakib
      */
 	public void startingConvo(String statement)
     {
+        System.out.println("");
+        System.out.println("");
         System.out.println("What kind of relationships are you interested in "+ this.name+ "?");
         System.out.println("Parents, Friends, or Crushes?");
         Scanner in = new Scanner(System.in);
@@ -134,11 +137,12 @@ public class ChatBotSakib
                 emotion++;
             } else
             {
-                System.out.println(statement+" is a good quality!");
+                System.out.println(statement+" are good qualities!");
                 emotion++;
             }
 
-        } else
+        }
+        else
         {
             System.out.println("I could not catch that.");
             emotion--;
@@ -211,7 +215,14 @@ public class ChatBotSakib
            emotion++;
 
 
-        } else {
+        } else if (findKeyword(statement, "happy",0)>= 0 || findKeyword(statement, "good",0)>= 0 || findKeyword(statement, "love",0)>= 0 || findKeyword(statement, "glad",0)>= 0 || findKeyword(statement, "thrilled",0)>= 0)
+        {
+            emotion++;
+        } else if(findKeyword(statement, "sad",0)>= 0 || findKeyword(statement, "angry",0)>= 0 || findKeyword(statement, "hate",0)>= 0 || findKeyword(statement, "bad",0)>= 0 || findKeyword(statement, "horrible",0)>= 0)
+        {
+            emotion--;
+        } else
+        {
             response = getRandomResponse();
         }
 		
