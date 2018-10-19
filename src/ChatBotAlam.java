@@ -34,6 +34,9 @@ public class ChatBotAlam
 
 
 		}
+		System.out.println("Try our other bots! ");
+		ChatBotRunner.botRunner();
+		in.close();
 
 	}
 	/**
