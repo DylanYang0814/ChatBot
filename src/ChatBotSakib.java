@@ -47,7 +47,7 @@ public class ChatBotSakib
         {
             Thread.currentThread().interrupt();
         }
-        System.out.println("It's also important to have great friends. Theyw ill always be there for you, just make sure you make teh right kind of friends!");
+        System.out.println("It's also important to have great friends. They will always be there for you, just make sure you make teh right kind of friends!");
         try
         {
             Thread.sleep(3000);

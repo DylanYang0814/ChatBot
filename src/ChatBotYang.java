@@ -1,7 +1,7 @@
 import java.util.concurrent.TimeUnit;
 import java.util.Random;
 import java.util.Scanner;
-
+//Dylan (Chengjie) Yang Period 2&3
 /**
  * A program to carry on conversations with a human user.
  * This version:
@@ -34,6 +34,9 @@ public class ChatBotYang
 
 
 		}
+		System.out.println("Try our other bots! ");
+		ChatBotRunner.botRunner();
+		in.close();
 
 	}
 	/**
