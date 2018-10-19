@@ -1,4 +1,4 @@
-
+// Nazmus Sakib Period 2 & 3
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class ChatBotSakib
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
-	int emotion = -1;
+	int emotion = 0;
 	String name;
 
 
@@ -28,6 +28,43 @@ public class ChatBotSakib
 		Scanner in = new Scanner (System.in);
         System.out.println("Hey I'm Bob! Who're you?");
         this.name = in.nextLine();
+        System.out.println("Hey "+name+" im excited to talk to you!");
+        System.out.println("I just wanted to say that:");
+        try
+        {
+            Thread.sleep(700);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
+        System.out.println("One of the most important relationships you can make is with your Parents! They are always there for you. Make sure you learn to appreciate them "+ this.name+ ".");
+        try
+        {
+            Thread.sleep(3000);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
+        System.out.println("It's also important to have great friends. Theyw ill always be there for you, just make sure you make teh right kind of friends!");
+        try
+        {
+            Thread.sleep(3000);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
+        System.out.println("Crushes aren't very important but they can eventually develop into something better. Just make sure you don't get too obsessed they might end up breaking your heart.");
+        try
+        {
+            Thread.sleep(2000);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
 
         startingConvo(statement);
 
@@ -45,11 +82,14 @@ public class ChatBotSakib
 
 	}
 
+    /**
+     * Method that initialzes the initial coversation between the bot and the user.
+     * @param statement is used in the method to store the users text input.
+     */
 	public void startingConvo(String statement)
     {
         System.out.println("What kind of relationships are you interested in "+ this.name+ "?");
-        System.out.println("I can help you with Parents, Friends, or Crushes");
-        System.out.println("Type the one that you want help with");
+        System.out.println("Parents, Friends, or Crushes?");
         Scanner in = new Scanner(System.in);
         statement = in.nextLine();
 
@@ -57,9 +97,16 @@ public class ChatBotSakib
         {
             System.out.println("Who do you love?");
             String statement1 = in.nextLine();
-            System.out.println(imInLove(statement1));
+            if (findKeyword(statement, "I love",0)>= 0)
+            {
+                System.out.println(imInLove(statement1));
+            } else
+            {
+                System.out.println("What do you love about "+ statement1+"?");
+            }
             statement = in.nextLine();
-            System.out.println("Wow "+statement+" is such an amazing quality! "+ "I can see why you love "+statement1.substring(findKeyword(statement, "I love", 0))+".");
+            System.out.println("Wow "+statement+" is such an amazing quality! "+ "I can see why you love "+statement1);
+            emotion++;
 
         } else if (statement.equalsIgnoreCase("parents"))
         {
@@ -79,10 +126,22 @@ public class ChatBotSakib
             }
         } else if (statement.equalsIgnoreCase("friends"))
         {
+            System.out.println("What qualities do you look for in a friend?");
+            statement = in.nextLine();
+            if (findKeyword(statement, "I look for",0)>= 0)
+            {
+                System.out.println(transformFriend(statement));
+                emotion++;
+            } else
+            {
+                System.out.println(statement+" is a good quality!");
+                emotion++;
+            }
 
         } else
         {
             System.out.println("I could not catch that.");
+            emotion--;
         }
     }
 
@@ -106,6 +165,7 @@ public class ChatBotSakib
 		if (statement.length() == 0)
 		{
 			response = "You need to type before you press enter, lol.";
+			emotion--;
 		}
 
 		else if (findKeyword(statement, "no") >= 0)
@@ -146,14 +206,14 @@ public class ChatBotSakib
             response = imInLove(statement);
             Scanner tempScan = new Scanner(System.in);
             String tempString = tempScan.nextLine();
-            System.out.println("You love their "+tempString+"?");
+            System.out.println("You love "+tempString.substring(findKeyword (statement, "I love", 0))+"?");
             System.out.println("Thats so wonderful!");
+           emotion++;
 
+
+        } else {
+            response = getRandomResponse();
         }
-		else
-		{
-			response = getRandomResponse();
-		}
 		
 		return response;
 	}
@@ -251,32 +311,21 @@ public class ChatBotSakib
 
         String restOfStatement = statement.substring(psnOfI+ 6).trim();
         return("What do you love about " + restOfStatement + "?");
+
 	}
 
 	public String transformFriend(String statement)
     {
         //  Remove the final period, if there is one
+
+
         statement = statement.trim();
         String lastChar = statement.substring(statement.length() - 1);
         if (lastChar.equals("."))
         {
-            statement = statement.substring(0, statement
-                    .length() - 1);
-        }
-
-        int psnOfI = findKeyword (statement, "friend", 0);
-
-        System.out.println("What qualities do you look for in a friend?");
-        Scanner input = new Scanner(System.in);
-        statement = input.nextLine();
-
-        statement = statement.trim();
-        lastChar = statement.substring(statement.length() - 1);
-        if (lastChar.equals("."))
-        {
             statement = statement.substring(0, statement.length() - 1);
         }
-        psnOfI = findKeyword (statement, "I look for", 0);
+        int psnOfI = findKeyword (statement, "I look for", 0);
 
 
         return "I look for " + statement.substring(psnOfI) + " too!";
@@ -381,14 +430,15 @@ public class ChatBotSakib
 	}
 	
 	private String [] randomNeutralResponses = {"Interesting, tell me more",
-			"Hmmm.",
-			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
-			"So, would you like to go for a walk?",
-			"Could you say that again?"
+			"Your parents are always there for you.",
+			"Ever have a girl break your heart?",
+			"Make sure you make friends with reliable people.",
+			"Not every crush you have will end up as a relationship.",
+			"So, who do you like better your Mom or Dad?",
+            "Being in love is so comforting and excruciating at the same time!",
+            "When do you think you're going to ask out your crush?"
 	};
-	private String [] randomAngryResponses = {"Its aii man life is slow like that sometimes","It's gonna get better eventually","When life gives you lemons make lemonade","Its aii you got ode things going for you dont let one L bring u down"};
-	private String [] randomHappyResponses = {"Life really is amazing isn't it?","Great weather we're having! It really makes me happy!","I'm glad to see you're doing well","A smile a day makes the world a better place."};
+	private String [] randomAngryResponses = {"Its aii man life is slow like that sometimes","It's gonna get better eventually","When life gives you lemons make lemonade","Tomorrow's a new day and another opportunity to make new friendships","I'm sure your crush likes you back!","Whenever my crush doesn't text back I just listen to the Weeknd", "My parents don't understand me either!","I hate it when my friends snake on me","I'll be your friend!"};
+	private String [] randomHappyResponses = {"Life really is amazing isn't it?","You should be happy you have such great friends!","I'm sure your crush likes you back!","Wow your parents must be really proud of you","How do you have such successful relationships","I feel like you're one of my first and closest friends","Post Malone just makes me happy, I listen to him with my friends","Life really is great with all these friends","Damn all your crushes like you back."};
 
 }
