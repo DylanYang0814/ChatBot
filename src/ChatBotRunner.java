@@ -58,6 +58,9 @@ public class ChatBotRunner
 		}
 	}
 
+    /**
+     * Used to chose between which bot is currently running
+     */
 	public static void botRunner()
     {
         ChatBotYang chatbot2 = new ChatBotYang();

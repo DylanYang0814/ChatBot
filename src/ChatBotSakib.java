@@ -306,7 +306,12 @@ public class ChatBotSakib
 		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
 		return "Why do you " + restOfStatement + " me?";
 	}
-	
+
+    /**
+     *  A method that is used to transform the users input if it contains I Love in it.
+     * @param statement The users input is passed into the method as the String statement
+     * @return Returns a String/prompt for the user to respond back to.
+     */
 	public String imInLove(String statement)
 	{
         //  Remove the final period, if there is one
@@ -325,6 +330,11 @@ public class ChatBotSakib
 
 	}
 
+    /**
+     *  A method to transform the users input whenever it contains "I look for".
+     * @param statement The users input is passed into the method as the String statement
+     * @return Returns a String/prompt for the user to respond back to.
+     */
 	public String transformFriend(String statement)
     {
         //  Remove the final period, if there is one
