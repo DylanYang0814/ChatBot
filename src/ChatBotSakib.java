@@ -1,10 +1,6 @@
-import SakibBotDir.*;
 
 import java.util.Random;
 import java.util.Scanner;
-//import edu.stanford.nlp.simple.*;
-
-
 
 
 
@@ -19,9 +15,7 @@ public class ChatBotSakib
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = -1;
-	String[] tempArr;
-	private Person[] userRelationships = new Person[1000];
-	private User endUser = new User(userRelationships);
+	String name;
 
 
 
@@ -33,30 +27,73 @@ public class ChatBotSakib
 	{
 		Scanner in = new Scanner (System.in);
         System.out.println("Hey I'm Bob! Who're you?");
-        String name = in.nextLine();
-        System.out.println("Hey "+name+" how's college going for you?");
-        endUser.setUserName(name);
-        //System.out.println(endUser.getUserName());
+        this.name = in.nextLine();
 
-		while (!statement.equals("Bye"))
+        startingConvo(statement);
+
+		while (!statement.equalsIgnoreCase("Bye"))
 		{
 
 			statement = in.nextLine();
 			//getResponse handles the user reply
 			System.out.println(getResponse(statement));
 
-
 		}
+		System.out.println("Try our other bots! ");
+		ChatBotRunner.botRunner();
+        in.close();
 
 	}
 
+	public void startingConvo(String statement)
+    {
+        System.out.println("What kind of relationships are you interested in "+ this.name+ "?");
+        System.out.println("I can help you with Parents, Friends, or Crushes");
+        System.out.println("Type the one that you want help with");
+        Scanner in = new Scanner(System.in);
+        statement = in.nextLine();
+
+        if (statement.equalsIgnoreCase("crushes"))
+        {
+            System.out.println("Who do you love?");
+            String statement1 = in.nextLine();
+            System.out.println(imInLove(statement1));
+            statement = in.nextLine();
+            System.out.println("Wow "+statement+" is such an amazing quality! "+ "I can see why you love "+statement1.substring(findKeyword(statement, "I love", 0))+".");
+
+        } else if (statement.equalsIgnoreCase("parents"))
+        {
+            System.out.println("How is your relationship with your parents? Good or bad?");
+            statement = in.nextLine();
+            if (statement.equalsIgnoreCase("good"))
+            {
+                System.out.println("That's great! It's important to have a healthy relationship with your parents!");
+                emotion++;
+            } else if (statement.equalsIgnoreCase("bad"))
+            {
+                System.out.println(this.name+" that's not good! Your relationship with your parents is very important. You should try to mend it!");
+                emotion--;
+            } else
+            {
+                System.out.println("Its important that you treat your parent's with respect, you always want a healthy relationship with them!");
+            }
+        } else if (statement.equalsIgnoreCase("friends"))
+        {
+
+        } else
+        {
+            System.out.println("I could not catch that.");
+        }
+    }
 
 
 
-	
+
+
+
 	/**
 	 * Gives a response to a user statement
-	 * 
+	 *
 	 * @param statement
 	 *            the user statement
 	 * @return a response based on the rules given
@@ -64,6 +101,7 @@ public class ChatBotSakib
 	public String getResponse(String statement)
 	{
 		String response = "";
+
 		
 		if (statement.length() == 0)
 		{
@@ -100,7 +138,18 @@ public class ChatBotSakib
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
-		}	
+		}	else if (statement.equalsIgnoreCase("bye"))
+        {
+            return "";
+        } else if ( findKeyword(statement, "I love",0)>= 0)
+        {
+            response = imInLove(statement);
+            Scanner tempScan = new Scanner(System.in);
+            String tempString = tempScan.nextLine();
+            System.out.println("You love their "+tempString+"?");
+            System.out.println("Thats so wonderful!");
+
+        }
 		else
 		{
 			response = getRandomResponse();
@@ -110,11 +159,7 @@ public class ChatBotSakib
 	}
 
 
-	private void nameCheck(String sentence)
-    {
-        //Sentence sent = new Sentence(sentence);
 
-    }
 
 
 
@@ -161,7 +206,7 @@ public class ChatBotSakib
 					.length() - 1);
 		}
 		int psn = findKeyword (statement, "I want", 0);
-		String restOfStatement = statement.substring(psn + 6).trim();
+		String restOfStatement = statement.substring(psn ).trim();
 		return "Would you really be happy if you had " + restOfStatement + "?";
 	}
 	
@@ -191,20 +236,51 @@ public class ChatBotSakib
 		return "Why do you " + restOfStatement + " me?";
 	}
 	
-	private String imSad(String statement)
+	public String imInLove(String statement)
 	{
-		statement = statement.trim();
+        //  Remove the final period, if there is one
         statement = statement.trim();
-        String lastChar = statement.substring(statement
-                .length() - 1);
+        String lastChar = statement.substring(statement.length() - 1);
         if (lastChar.equals("."))
         {
             statement = statement.substring(0, statement
                     .length() - 1);
         }
 
-		return "";
+        int psnOfI = findKeyword (statement, "I love", 0);
+
+        String restOfStatement = statement.substring(psnOfI+ 6).trim();
+        return("What do you love about " + restOfStatement + "?");
 	}
+
+	public String transformFriend(String statement)
+    {
+        //  Remove the final period, if there is one
+        statement = statement.trim();
+        String lastChar = statement.substring(statement.length() - 1);
+        if (lastChar.equals("."))
+        {
+            statement = statement.substring(0, statement
+                    .length() - 1);
+        }
+
+        int psnOfI = findKeyword (statement, "friend", 0);
+
+        System.out.println("What qualities do you look for in a friend?");
+        Scanner input = new Scanner(System.in);
+        statement = input.nextLine();
+
+        statement = statement.trim();
+        lastChar = statement.substring(statement.length() - 1);
+        if (lastChar.equals("."))
+        {
+            statement = statement.substring(0, statement.length() - 1);
+        }
+        psnOfI = findKeyword (statement, "I look for", 0);
+
+
+        return "I look for " + statement.substring(psnOfI) + " too!";
+    }
 	
 	
 	/**
