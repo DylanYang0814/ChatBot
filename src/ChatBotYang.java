@@ -24,7 +24,7 @@ public class ChatBotYang
 
         askName(statement);
         //Starter(statement);
-		while (!statement.equals("Byee"))
+		while (!statement.equalsIgnoreCase("Bye"))
 		{
 
 
@@ -48,6 +48,10 @@ public class ChatBotYang
 		return "Hi, what's? up?";
 	}
 
+    /**
+     * Asks the name, and saves the name into memory
+     * @param statement
+     */
 	private void askName(String statement)
     {
         System.out.println("Hello, what's your name?");
@@ -163,6 +167,7 @@ public class ChatBotYang
                 Thread.sleep(1000);
                 System.out.println("For winter clothes, you would need 30-40 minutes on high");
                 Thread.sleep(1000);
+                System.out.println("For Questions on materials, say 'Can I use'");
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
                 throw new RuntimeException(ex);
@@ -212,6 +217,11 @@ public class ChatBotYang
 		return "Why do you want to " + restOfStatement + "?";
 	}
 
+    /**
+     * Takes input of the user, and returns a statement depending on
+     * @param statement
+     * @return
+     */
 	private String transformCanIUse(String statement)
 	{
 		//  Remove the final period, if there is one
