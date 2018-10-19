@@ -71,7 +71,6 @@ public class ChatBotRunner
         System.out.println("For information on laundry, folding, ironing, and general hygiene say 2 or hygiene");
         System.out.println("For information on college class, say 3 or class");
         System.out.println("For more information on college relationships say 4 or relationship");
-        //System.out.println();
         String statement = in.nextLine();
 
 
@@ -84,18 +83,15 @@ public class ChatBotRunner
             {
                 chatbot1.chatLoop(statement);
                 statement = in.nextLine();
-            }
-            if (statement.equals("hyigene") || statement.equals("2"))
+            } else if (statement.equals("hyigene") || statement.equals("2"))
             {
                 chatbot2.chatLoop(statement);
                 statement = in.nextLine();
-            }
-            if (statement.equals("class") || statement.equals("3"))
+            } else if (statement.equals("class") || statement.equals("3"))
             {
                 chatbot3.chatLoop(statement);
                 statement = in.nextLine();
-            }
-            if (statement.equals("relationship") || statement.equals("4"))
+            } else if (statement.equals("relationship") || statement.equals("4"))
             {
                 chatbot4.chatLoop(statement);
                 statement = in.nextLine();
